@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "500402019159",
+    "project_id": "pruebatecnicadesarrollodigital",
+    "storage_bucket": "pruebatecnicadesarrollodigital.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:500402019159:android:7b19328bc60fbfc5ac3c12",
+        "android_client_info": {
+          "package_name": "com.example.prueba_tecnica_desarrollo_digital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "500402019159-4764ro54138ofuu0o2roar26tbjd9dhb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1quXdEsVwIMKHLh5rttswaErmhlSviqE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "500402019159-4764ro54138ofuu0o2roar26tbjd9dhb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
