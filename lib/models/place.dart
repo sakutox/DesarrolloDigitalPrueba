@@ -16,5 +16,5 @@ class Place {
       required this.location,
       required this.photo,
       required this.category,
-      required this.rate}) {}
+      required this.rate});
 }

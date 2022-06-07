@@ -1,5 +1,13 @@
+import 'dart:io';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:prueba_tecnica_desarrollo_digital/models/publicacion.dart';
 
 class CrearPublicacion extends StatefulWidget {
   CrearPublicacion({Key? key}) : super(key: key);
@@ -12,9 +20,39 @@ class _CrearPublicacionState extends State<CrearPublicacion> {
   final controladorNombreLugar = TextEditingController();
   final controladorDescripcion = TextEditingController();
 
+  File? image;
+  Publicacion publicacion = Publicacion();
+  PlatformFile? pickedFile;
+  UploadTask? uploadTask;
+  String? urlFirebase;
+
+  selectFile() async {
+    final result = await FilePicker.platform.pickFiles();
+    if (result == null) return;
+
+    setState(() {
+      pickedFile = result.files.first;
+    });
+
+    uploadFile();
+  }
+
+  Future uploadFile() async {
+    final path = 'files/my-image.jpg';
+    final file = File(pickedFile!.path!);
+
+    final ref = FirebaseStorage.instance.ref().child(path);
+    uploadTask=  ref.putFile(file);
+
+    final snapshot = await uploadTask!.whenComplete((){});
+
+    final urlDownload = await snapshot.ref.getDownloadURL();
+    urlFirebase = urlDownload;
+    print('Download link: $urlDownload');
+  }
+
   @override
   Widget build(BuildContext context) {
-    
     final botonContinuar = Material(
       elevation: 5,
       borderRadius: BorderRadius.circular(3),
@@ -23,15 +61,11 @@ class _CrearPublicacionState extends State<CrearPublicacion> {
         padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
         minWidth: MediaQuery.of(context).size.width,
         onPressed: () {
-          // var user = UserFirebase(
-          //   correo: controladorCorreo.text,
-          //   direccion: controladorDireccion.text,
-          //   telefono: data,
-          //   nombreCompleto: controladorNombreCompleto.text,
-          // );
-
-          // user.createUser(user);
-          Navigator.of(context).pushNamed('/');
+          publicacion.descripcion = controladorDescripcion.text;
+          publicacion.nombre = controladorNombreLugar.text;
+          publicacion.imagen = urlFirebase;
+          publicacion.createUser(publicacion);
+          Navigator.of(context).popAndPushNamed('/');
         },
         child: const Text(
           "Crear Publicación",
@@ -71,7 +105,7 @@ class _CrearPublicacionState extends State<CrearPublicacion> {
           minLines: 7,
           maxLines: 8,
           controller: controladorDescripcion,
-          keyboardType: TextInputType.number,
+          keyboardType: TextInputType.emailAddress,
           onSaved: (value) {
             controladorDescripcion.text = value!;
           },
@@ -94,8 +128,7 @@ class _CrearPublicacionState extends State<CrearPublicacion> {
             padding: EdgeInsets.fromLTRB(20, 15, 20, 15),
             minWidth: 100,
             onPressed: () {
-              //funcion crear cuenta
-              //signUp(emailController.text, passwordController.text);
+              publicacion.etiqueta = titulo;
             },
             child: Row(
               children: [
@@ -124,19 +157,26 @@ class _CrearPublicacionState extends State<CrearPublicacion> {
             children: [
               SizedBox(height: 20),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                  selectFile();
+                },
                 child: Container(
-                  height: 200,
-                  width: 300,
-                  alignment: Alignment.center,
-                  padding: EdgeInsets.all(30),
-                  color: Color(0XFFe4e9eb),
-                  child: const Text(
-                    "Agregar una imagen",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontFamily: 'AmazingSlabBold'),
-                  ),
-                ),
+                    height: 200,
+                    width: 300,
+                    alignment: Alignment.center,
+                    color: Color(0XFFe4e9eb),
+                    child: pickedFile != null
+                        ? Image.file(
+                            File(pickedFile!.path!),
+                            width: 300,
+                            height: 200,
+                            fit: BoxFit.fill,
+                          )
+                        : const Text(
+                            "Agregar una imagen",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontFamily: 'AmazingSlabBold'),
+                          )),
               ),
               SizedBox(height: 40),
               Container(width: 300, child: campoLugar),
@@ -173,7 +213,6 @@ class _CrearPublicacionState extends State<CrearPublicacion> {
                 height: 20,
               ),
               Container(
-
                 child: Material(
                   elevation: 10,
                   borderRadius: BorderRadius.circular(5),
@@ -199,7 +238,7 @@ class _CrearPublicacionState extends State<CrearPublicacion> {
                               color: Colors.blue,
                             ),
                             onRatingUpdate: (rating) {
-                              print(rating);
+                              publicacion.calificacion = rating;
                             },
                           )
                         ],
