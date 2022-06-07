@@ -1,16 +1,43 @@
 # prueba_tecnica_desarrollo_digital
 
-A new Flutter project.
+# Desarrollo Digital Prueba
+Prueba de acceso para desarrollador flutter.
 
-## Getting Started
+Link de descarga:
 
-This project is a starting point for a Flutter application.
+Funcionalidades implementadas
 
-A few resources to get you started if this is your first Flutter project:
+- Consumo del API por medio de Futures
+- Registro de usuario con telefono y a su vez log in con telefono usando firebase como base de datos
+- Display de detalle de cada uno de los items traidos por la API
+- Implementación de mapa con la localización actual del usuario y el punto de destino
+- Ingreso con Google (pequeños detalles en esta funcionalidad ya que como la app no está autenticada muestra una pantalla en la cual se tiene que darle en opciones avanzadas para poder proceder e ingresar
+- Nueva publicación implementada con imagen subida al Firestore Storage
+- Todas las interfaces creadas
+- Rutas desde un archivo centralizado
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Desafios
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Implementar el trazado de rutas sin tener acceso a mapbox o las dependencias de google maps es bastante complicado, pero se puede lograr
+- El filtro de busqueda quedo pendiente por realizar por el hecho de que me enfoque mas en el consumo de datos con el API
+- El ingreso con facebook requiere generar unas claves de acceso que por desgracia no las pude generar directamente con mi ordenador, parece ser que tengo que configurar unas variables de entorno que no me toma el ordernador.
+
+Dependencias usadas en el proyecto
+
+  cupertino_icons: ^1.0.2
+  flutter_rating_bar: ^4.0.1
+  carousel_slider: ^4.1.1
+  http: ^0.13.4
+  cloud_firestore: ^3.1.17
+  firebase_database: ^9.0.15
+  firebase_auth: ^3.3.19
+  firebase_core: ^1.17.1
+  google_sign_in: ^5.3.3
+  fluttertoast: ^8.0.9
+  shared_preferences: ^2.0.15
+  image_picker: ^0.8.5+3
+  flutter_map: ^0.14.0
+  geolocator: ^8.2.1
+  font_awesome_flutter: ^10.1.0  
+
+
