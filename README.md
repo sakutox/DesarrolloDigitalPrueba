@@ -3,7 +3,7 @@
 # Desarrollo Digital Prueba
 Prueba de acceso para desarrollador flutter.
 
-Link de descarga:
+Link de descarga: https://www.mediafire.com/file/fd6j2mivic4y022/pruebaTecnica.apk/file
 
 Funcionalidades implementadas
 
