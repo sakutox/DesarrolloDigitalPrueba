@@ -24,20 +24,23 @@ Desafios
 
 Dependencias usadas en el proyecto
 
-  cupertino_icons: ^1.0.2
-  flutter_rating_bar: ^4.0.1
-  carousel_slider: ^4.1.1
-  http: ^0.13.4
-  cloud_firestore: ^3.1.17
-  firebase_database: ^9.0.15
-  firebase_auth: ^3.3.19
-  firebase_core: ^1.17.1
-  google_sign_in: ^5.3.3
-  fluttertoast: ^8.0.9
-  shared_preferences: ^2.0.15
-  image_picker: ^0.8.5+3
-  flutter_map: ^0.14.0
-  geolocator: ^8.2.1
-  font_awesome_flutter: ^10.1.0  
+- cupertino_icons: ^1.0.2
+- flutter_rating_bar: ^4.0.1
+- carousel_slider: ^4.1.1
+- http: ^0.13.4
+- cloud_firestore: ^3.1.17
+- firebase_database: ^9.0.15
+- firebase_auth: ^3.3.19
+- firebase_core: ^1.17.1
+- firebase_storage: ^10.2.17
+- google_sign_in: ^5.3.3
+- fluttertoast: ^8.0.9
+- shared_preferences: ^2.0.15
+- image_picker: ^0.8.5+3
+- file_picker: ^4.6.1
+- flutter_map: ^0.14.0
+- geolocator: ^8.2.1
+- flutter_facebook_auth: ^4.3.4+1
+- font_awesome_flutter: ^10.1.0 
 
 
