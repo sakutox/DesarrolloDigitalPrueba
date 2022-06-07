@@ -1,5 +1,3 @@
-# prueba_tecnica_desarrollo_digital
-
 # Desarrollo Digital Prueba
 Prueba de acceso para desarrollador flutter.
 
