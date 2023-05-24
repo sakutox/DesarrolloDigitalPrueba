@@ -14,36 +14,6 @@ class PantallaPrincipal extends StatefulWidget {
 class _PantallaPrincipalState extends State<PantallaPrincipal> {
   @override
   Widget build(BuildContext context) {
-    
-    _botonesListView(String titulo, double size, String asset) {
-      return Material(
-          borderRadius: BorderRadius.circular(3),
-          color: Color(0xffebf4f7),
-          child: MaterialButton(
-            minWidth: 100,
-            onPressed: () {
-              //funcion crear cuenta
-              //signUp(emailController.text, passwordController.text);
-            },
-            child: Row(
-              children: [
-                Text(
-                  titulo,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: size,
-                      color: Color(0XFF033236),
-                      fontFamily: 'AmazingSlabBold'),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Image.asset(asset)
-              ],
-            ),
-          ));
-    }
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
